@@ -1,0 +1,58 @@
+#!/bin/python3
+
+import PyPDF2
+import textract
+import re
+import sys
+
+file = sys.argv[1]
+
+readPDF = PyPDF2.PdfFileReader(open(file, 'rb'))
+pageNum = readPDF.numPages
+
+def toOCR(text):
+    ocrExtract = textract.process(text, encoding='utf-8')
+    return ocrExtract.decode('utf8')
+
+extrdText = toOCR(file)
+
+def definePattern(pattern):
+    pattern = re.compile(pattern)
+    matches = pattern.findall(extrdText) 
+    return list( set(matches) ) 
+
+def extractInfo(patternList):
+    results = []
+    for pattern in patternList:
+        results.append(
+                        ( " ".join( definePattern(pattern) ) ).replace("\n", " ")
+                      )
+    return results
+
+def getInfo():
+    tipe = "".join( definePattern(r'vivo|MEI') )
+    patterns = {
+    '' : [ r"Valor documento\s\s(.+)",
+                 r"Beneficiário\s+Agência \/ Código do Beneficiário\s+Espécie\s+(.+\s+.+)",
+                 r"Carteira \/ Nosso número\s(.+)",
+                 r"\(\+\) Mora / Multa\s\s(.+)",
+                 r"\d{5}\.\d{5} \d{5}\.\d{6} \d{5}\.\d{6} \d \d{14}",
+               ],
+    'MEI'    : [ r"CNPJ\sNúmero\:\sPagar até\:\sValor\:\s+(.+\s.+\s.+\s.+)",
+                 r"\d{11} \d",
+               ],
+    'vivo'   : [r"Vencimento\s+Total a Pagar - R\$\s+(.+\s+.+)",
+                r"\s(\d{12})\s", 
+                ],
+    }
+    result = (extractInfo( patterns[ tipe ] ) )
+    result.append( str(tipe) )
+    return result
+
+
+if ( pageNum < 5 ):
+    print( extrdText,  '\n' )
+    print( getInfo() ) 
+else :
+    print ("Arquivo muito extenso")
+
