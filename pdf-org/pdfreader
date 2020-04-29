@@ -1,4 +1,4 @@
-#!/bin/python3
+#!/bin/python3 -W ignore
 
 import PyPDF2
 import sys
@@ -6,7 +6,12 @@ import sys
 file = sys.argv[1]
 
 PDF = PyPDF2.PdfFileReader( file, 'rb' )
+PAGE_NUM = PDF.numPages
 
-pageNum = PDF.numPages
+def checkSize():
+    if (PAGE_NUM < 3):
+        print('small')
+    else:
+        print('big')
 
-print(pageNum)
+checkSize()
