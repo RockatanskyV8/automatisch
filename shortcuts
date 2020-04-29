@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
 # Output locations. Unactivated progs should go to /dev/null.
-shell_shortcuts="$HOME/.scripts/folders_als" #"$HOME/.config/shortcutrc"
+shell_shortcuts="$HOME/.config/shortcutrc" #"$HOME/.config/shortcutrc"
 ranger_shortcuts="/dev/null" #"$HOME/.config/ranger/shortcuts.conf"
 qute_shortcuts="/dev/null"
 fish_shortcuts="/dev/null" #"$HOME/.config/shortcutrc"
 vifm_shortcuts="/dev/null" #"$HOME/.config/vifm/vifmshortcuts"
 
-config_file="$HOME/.config/shortcutrc"
+config_file="$HOME/.scripts/shortcutrc"
 
 # Remove, prepare files
 rm -f "$ranger_shortcuts" "$qute_shortcuts" 2>/dev/null
