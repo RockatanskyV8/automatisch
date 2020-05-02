@@ -3,7 +3,7 @@
 folder="$HOME/Downloads/*.pdf" 
 
 for file in $folder; do
-  info=$(./pdfreader "$file")
+  info=$(python3 -c "import pdfreader; pdfreader.checkSize('$file')")
   [ "$info" == "small" ] && mv "$file" $HOME/Documentos/PDF/small/
   [ "$info" == "big" ] && mv "$file" $HOME/Documentos/PDF/big/
 
