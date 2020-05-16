@@ -2,10 +2,14 @@
 
 folder="$HOME/Downloads/*.pdf" 
 
-for file in $folder; do
-  info=$(python3 -c "import pdfreader; pdfreader.checkSize('$file')")
-  [ "$info" == "small" ] && mv "$file" $HOME/Documentos/PDF/small/
-  [ "$info" == "big" ] && mv "$file" $HOME/Documentos/PDF/big/
+reorganize_files(){
+  
+  for file in $folder; do
+    info=$(python3 -c "import pdfreader; pdfreader.checkSize('$file')")
+    [ "$info" == "small" ] && mv "$file" $HOME/Documentos/PDF/small/
+	 [ "$info" == "big" ] && mv "$file" $HOME/Documentos/PDF/big/
+  done
 
-done
+}
 
+reorganize_files

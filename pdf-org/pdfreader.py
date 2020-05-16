@@ -9,3 +9,4 @@ def checkSize(file):
     else:
         print('big')
 
+
