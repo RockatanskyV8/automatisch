@@ -1,3 +1,5 @@
+# vim: filetype=zsh
+
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%}±"                              # plus/minus     - clean repo
 GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
