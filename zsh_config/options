@@ -1,3 +1,5 @@
+# vim: filetype=zsh
+
 ## Options section
 setopt correct                                                  # Auto correct mistakes
 setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
@@ -17,6 +19,11 @@ zstyle ':completion:*' rehash true                              # automatically 
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
 zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*' menu select
+
+zmodload zsh/complist
+compinit
+
 HISTFILE=~/.cache/zhistory
 HISTSIZE=1000
 SAVEHIST=500
