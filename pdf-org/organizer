@@ -1,0 +1,7 @@
+#!/bin/sh
+
+eval $(rga $1 $2 | grep ".pdf" | awk -F'[\:]' -v DEST=$3 '{print "mv \"" $1 "\" " DEST ";" }' 2>/dev/null | sort --unique)
+
+# 1 - PATTERN
+# 2 - ORIGIN FOLDER
+# 3 - FOLDER DESTINY
