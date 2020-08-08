@@ -1,3 +1,3 @@
 #!/bin/sh
 
-eval $( sed "s/\s*#.*$//;/^\s*$/d" lista.txt | awk '{print "[[ $(ls " $1 " | wc -l) > 0 ]] && mv " $1 " " $2 "|| echo \"sem arquivos em " $1 " \";"}' )
+eval $( sed "s/\s*#.*$//;/^\s*$/d" lista.txt | awk '{print "[[ $(ls " $1 " 2>/dev/null | wc -l) > 0 ]] && mv " $1 " " $2 "|| echo \"sem arquivos em " $1 " \";"}' )
