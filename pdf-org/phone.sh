@@ -17,7 +17,7 @@ VIDEOS="$HOME/Vídeos/WPP"
 [[ -f $WPP/*Video/Sent/*.mp4 ]] &&  mv $WPP/*Video/Sent/*.mp4 $VIDEOS || echo "Nenhum vídeo $WPP"
 
 IMAGENS="$HOME/Imagens/WPP"
-[[ -f $WPP/*Images/*.jpg ]] && mv $WPP/*Images/*.jpg $IMAGENS || echo "Nenhum jpg em $WPP"
+[ -f $WPP/*Images/*.jpg ] && mv $WPP/*Images/*.jpg $IMAGENS
 [[ -f $WPP/*Images/*.jpeg ]] && mv $WPP/*Images/*.jpeg $IMAGENS || echo "Nenhum jpeg em $WPP"
 [[ -f $WPP/*Images/Sent/*.jpg ]] && mv $WPP/*Images/Sent/*.jpg $IMAGENS || echo "Nenhum jpg em $WPP"
 [[ -f $WPP/*Images/Sent/*.jpeg ]] && mv $WPP/*Images/Sent/*.jpeg $IMAGENS || echo "Nenhum jpeg em $WPP"
