@@ -1,5 +1,6 @@
 import base64
 import sys
 
-result = base64.b64encode(bytes(sys.argv[1], 'utf-8'))
+word = input("What do you mean?\n")
+result = base64.b64encode(bytes(word, 'utf-8'))
 print(result)
